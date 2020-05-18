@@ -1,0 +1,75 @@
+<h1>Hero <small>Marvel1</small></h1>
+<div class="row text-right">
+    <div class="col">
+        <button routerLink="/heroes" 
+            class="btn btn-danger">
+            <i class="fa fa-arrow-left"></i>
+            Go back
+        </button>
+    </div>
+</div>
+
+<div class="row animate__animated animate__fadeIn animate__faster">
+    <div class="col">
+        <form   (ngSubmit)="save(heroForm)"
+                #heroForm="ngForm">
+             <div class="form-group">
+                <label >Firebase ID</label>
+                <input  type="text"
+                        class="form-control"
+                        disabled="disabled"
+                        [(ngModel)]="hero.id"
+                        name="id"
+                        placeholder="FirebaseID">
+                <small class="form-text text-muted">Auto-generated field</small>
+             </div>
+
+             <div class="form-group">
+                <label >Name</label>
+                <input  type="text"
+                        class="form-control"
+                        required
+                        [(ngModel)]="hero.name"
+                        name="name"
+                        placeholder="Marvel Hero Name">
+             </div>
+
+             <div class="form-group">
+                <label >Power</label>
+                <input  type="text"
+                        class="form-control"
+                        [(ngModel)]="hero.power"
+                        name="power"
+                        placeholder="SuperPower">
+             </div>
+
+             <div class="form-group">
+                <label >State</label>
+                <br>
+                <button *ngIf="hero.alive"
+                    (click)="hero.alive = false"
+                    class="btn btn-outline-success w-50" type="button">
+                    <i class="fa fa-smile-wink"></i>
+                    Alive
+                </button>
+                <button *ngIf="!hero.alive"
+                (click)="hero.alive = true"
+                class="btn btn-outline-danger w-50" type="button">
+                    <i class="fa fa-dizzy"></i>
+                    Dead
+                </button>
+             </div>
+
+             <hr>
+
+             <div class="form-group text-center">
+                 <button type="submit"
+                        class="btn btn-primary w-25">
+                    <i class="fa fa-save"></i>
+                    Save
+                 </button>
+             </div>
+
+        </form>
+    </div>
+</div>
